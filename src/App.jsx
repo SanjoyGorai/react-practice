@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query'
 
 const fetchProducts = async () => {
-  const response = await fetch('https://dummyjson.com/productss');
+  const response = await fetch('https://dummyjson.com/products');
   const data = await response.json();
   return data.products;
 }
@@ -14,7 +14,11 @@ const App = () => {
   // const [isLoading, setIsLoading] = useState(null);
   // const [error, setError] = useState(null);
 
-  const {isLoading,error, data: products } = useQuery({ queryKey: ['products'], queryFn: fetchProducts })
+  const { isLoading, error, data: products } = useQuery({
+    queryKey: ['products'],
+    queryFn: fetchProducts,
+    staleTime: 5000
+  })
 
 
   // useEffect(() => {
@@ -35,6 +39,9 @@ const App = () => {
 
   if (isLoading) {
     return <h3>Loading....</h3>
+  }
+  if (error) {
+    return <h3>{error.message}</h3>
   }
 
   return (
