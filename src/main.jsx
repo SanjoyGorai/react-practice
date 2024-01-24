@@ -8,7 +8,13 @@ import Phones from './components/Phones/Phones.jsx'
 import { QueryClientProvider, QueryClient, } from '@tanstack/react-query'
 
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+          gcTime: 1000 * 24, // 24 hours
+        },
+      },
+})
 
 const router = createBrowserRouter([
     {
