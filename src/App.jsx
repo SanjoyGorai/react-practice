@@ -1,74 +1,46 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query'
+
+const fetchProducts = async () => {
+  const response = await fetch('https://dummyjson.com/productss');
+  const data = await response.json();
+  return data.products;
+}
 
 const App = () => {
 
-  // const products = [
-  //   {
-  //     id: 1,
-  //     name: 'Basic Tee',
-  //     href: '#',
-  //     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-  //     imageAlt: "Front of men's Basic Tee in black.",
-  //     price: '$35',
-  //     color: 'Black',
-  //   },
-  //   {
-  //     id: 1,
-  //     name: 'Basic Tee',
-  //     href: '#',
-  //     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-  //     imageAlt: "Front of men's Basic Tee in black.",
-  //     price: '$35',
-  //     color: 'Black',
-  //   },
+  // const [products, setProducts] = useState([]);
+  // const [isLoading, setIsLoading] = useState(null);
+  // const [error, setError] = useState(null);
 
-  //   {
-  //     id: 1,
-  //     name: 'Basic Tee',
-  //     href: '#',
-  //     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-  //     imageAlt: "Front of men's Basic Tee in black.",
-  //     price: '$35',
-  //     color: 'Black',
-  //   },
-  //   {
-  //     id: 1,
-  //     name: 'Basic Tee',
-  //     href: '#',
-  //     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-  //     imageAlt: "Front of men's Basic Tee in black.",
-  //     price: '$35',
-  //     color: 'Black',
-  //   },
-  //   {
-  //     id: 1,
-  //     name: 'Basic Tee',
-  //     href: '#',
-  //     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-  //     imageAlt: "Front of men's Basic Tee in black.",
-  //     price: '$35',
-  //     color: 'Black',
-  //   },
+  const {isLoading,error, data: products } = useQuery({ queryKey: ['products'], queryFn: fetchProducts })
 
-  // ]
 
-  const [products, setProducts] = useState([]);
+  // useEffect(() => {
+  //   (async () => {
+  //     setIsLoading(true);
+  //     setError(null);
+  //     try {
+  //       const response = await fetch('https://dummyjson.com/products');
+  //       const data = await response.json();
+  //       console.log(data);
+  //       setProducts(data.products);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, [])
 
-  useEffect(() => {
-    fetch('https://dummyjson.com/products')
-      .then(res => res.json())
-      .then(product => {
-        setProducts(product.products);
-        console.log(product.products);
-      })
-
-  }, [])
-
+  if (isLoading) {
+    return <h3>Loading....</h3>
+  }
 
   return (
     <div className="bg-yellow-100">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+        {/* <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2> */}
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 
@@ -84,14 +56,19 @@ const App = () => {
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">
-                    <a href={product.href}>
+                    <Link to={''}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.title}
-                    </a>
+                    </Link>
+                    <Link to='/phone'>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {' '} ({product.category})
+                    </Link>
+
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                  <p className="mt-1 text-sm text-gray-500">${product.price}</p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">{product.price}</p>
+                <p className="text-sm font-medium text-gray-900">{product.stock}</p>
               </div>
             </div>
           ))}
