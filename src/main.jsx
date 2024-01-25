@@ -3,18 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Phones from './components/Phones/Phones.jsx'
-import { QueryClientProvider, QueryClient, } from '@tanstack/react-query'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-
-const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-          gcTime: 1000 * 24, // 24 hours
-        },
-      },
-})
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
     {
@@ -28,7 +22,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+
     <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
 )
