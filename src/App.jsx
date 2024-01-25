@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 const App = () => {
@@ -14,10 +15,15 @@ const App = () => {
 
   const { isLoading, error, data: products } = new useQuery({
     queryKey: ['products'],
-    queryFn: getProdcuts
+    queryFn: getProdcuts,
+    staleTime: 10000
   });
+
   if (isLoading) {
-    return <h3> 'Loading...' </h3>
+    return <h3> Loading... </h3>
+  }
+  if (error) {
+    return <h3>{error.message} </h3>
   }
 
   return (
@@ -39,10 +45,10 @@ const App = () => {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <a href={product.href}>
+                      <Link to={'/phone'}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.title}
-                      </a>
+                      </Link>
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">{product.color}</p>
                   </div>
