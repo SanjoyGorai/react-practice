@@ -7,6 +7,7 @@ import Phones from './components/Phones/Phones.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import Laptop from './components/Laptop/Laptop.jsx'
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     {
         path: '/phone',
         element: <Phones />
+    },
+    {
+        path: '/laptop',
+        element: <Laptop />
     }
 ]);
 

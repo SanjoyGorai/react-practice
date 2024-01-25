@@ -7,7 +7,7 @@ const Phones = () => {
   const { isLoading, error, data: products } = new useQuery({
     queryKey: ['productkey'],
     queryFn: async () => {
-      const res = await axios.get('https://dummyjson.com/products');
+      const res = await axios.get('https://dummyjson.com/products/category/smartphones');
       const data = await res.data;
       console.log(data.products);
       return data.products;
