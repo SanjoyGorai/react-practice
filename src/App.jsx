@@ -2,7 +2,8 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Users, { useFetch } from './components/Users/Users';
+import Users, from './components/Users/Users';
+import Products from './components/Products/Products';
 
 
 const App = () => {
@@ -11,26 +12,27 @@ const App = () => {
     const res = await axios.get('https://dummyjson.com/products');
     const data = await res.data;
     // console.log(data.products);
-    return data.products;
+    // return data.products;
   }
 
 
-  const { isLoading, error, data: products } = new useQuery({
-    queryKey: ['products'],
-    queryFn: getProdcuts,
-    staleTime: 10000
-  });
+  // const { isLoading, error, data: products } = new useQuery({
+  //   queryKey: ['products'],
+  //   queryFn: getProdcuts,
+  //   staleTime: 10000
+  // });
 
-  if (isLoading) {
-    return <h3> Loading... </h3>
-  }
-  if (error) {
-    return <h3>{error.message} </h3>
-  }
+  // if (isLoading) {
+  //   return <h3> Loading... </h3>
+  // }
+  // if (error) {
+  //   return <h3>{error.message} </h3>
+  // }
 
   return (
     <div>
-      <Users/>
+      <Users />
+      <Products/>
       {/* <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
