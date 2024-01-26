@@ -6,7 +6,7 @@ import Users from './components/Users/Users';
 import Products from './components/Products/Products';
 import useFetch from '../hooks/CustomHooks/useFetch';
 import Laptop from './components/Laptops/Laptop';
-
+import Mobiles from './components/Phones/Mobiles';
 
 const App = () => {
 
@@ -44,7 +44,8 @@ const App = () => {
 
   return (
     <div>
-      <Laptop/>
+      {/* <Laptop/> */}
+      <Mobiles/>
       {/* <Users />
       <Products /> */}
       {/* <div className="bg-white">
@@ -78,7 +79,6 @@ const App = () => {
           </div>
         </div>
       </div> */}
-      <h2>Mobiles</h2>
 
       {
         // products?.map((product, index) => {
