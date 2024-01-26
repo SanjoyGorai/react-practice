@@ -5,20 +5,21 @@ import { Link } from 'react-router-dom';
 import Users from './components/Users/Users';
 import Products from './components/Products/Products';
 import useFetch from '../hooks/CustomHooks/useFetch';
+import Laptop from './components/Laptops/Laptop';
 
 
 const App = () => {
 
-  const { isLoading, error, data: products } = useFetch('http://localhost:4001/mobiles')
+  // const { isLoading, error, data: products } = useFetch('http://localhost:4001/mobiles')
 
-  console.log("Mobiles " + products);
+  // console.log("Mobiles " + products);
 
-  if (isLoading) {
-    return <h3>Loading Loaclhost Data... </h3>
-  }
-  if (error) {
-    return <h3 className='text-red-600'> Error </h3>
-  }
+  // if (isLoading) {
+  //   return <h3>Loading Loaclhost Data... </h3>
+  // }
+  // if (error) {
+  //   return <h3 className='text-red-600'> Error </h3>
+  // }
 
   const getProdcuts = async () => {
     const res = await axios.get('https://dummyjson.com/products');
@@ -43,8 +44,9 @@ const App = () => {
 
   return (
     <div>
-      <Users />
-      <Products />
+      <Laptop/>
+      {/* <Users />
+      <Products /> */}
       {/* <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
@@ -79,13 +81,13 @@ const App = () => {
       <h2>Mobiles</h2>
 
       {
-        products?.map((product, index) => {
-          return (
-            <div key={index}>
-              <h3>{product.brandName} </h3>
-            </div>
-          )
-        })
+        // products?.map((product, index) => {
+        //   return (
+        //     <div key={index}>
+        //       <h3>{product.brandName} </h3>
+        //     </div>
+        //   )
+        // })
       }
 
     </div>
