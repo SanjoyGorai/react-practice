@@ -2,11 +2,21 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Users, from './components/Users/Users';
+import Users from './components/Users/Users';
 import Products from './components/Products/Products';
+import useFetch from '../hooks/CustomHooks/useFetch';
 
 
 const App = () => {
+
+  const { isLoading, error, data } = useFetch('http://localhost:4001/mobiles')
+  console.log(data);
+  if (isLoading) {
+
+  }
+  if (error) {
+
+  }
 
   const getProdcuts = async () => {
     const res = await axios.get('https://dummyjson.com/products');
@@ -32,7 +42,7 @@ const App = () => {
   return (
     <div>
       <Users />
-      <Products/>
+      <Products />
       {/* <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
