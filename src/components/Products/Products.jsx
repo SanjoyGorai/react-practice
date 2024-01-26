@@ -6,6 +6,7 @@ const Products = () => {
 
     const url = 'https://api.escuelajs.co/api/v1/products';
     const { isLoading, error, data:products } = useFetch(url);
+    console.log('Products::',products);
     if (isLoading) {
         return <h2>Loading Products... </h2>
     }

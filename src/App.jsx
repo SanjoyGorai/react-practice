@@ -9,13 +9,15 @@ import useFetch from '../hooks/CustomHooks/useFetch';
 
 const App = () => {
 
-  const { isLoading, error, data } = useFetch('http://localhost:4001/mobiles')
-  console.log(data);
-  if (isLoading) {
+  const { isLoading, error, data: products } = useFetch('http://localhost:4001/mobiles')
 
+  console.log("Mobiles " + products);
+
+  if (isLoading) {
+    return <h3>Loading Loaclhost Data... </h3>
   }
   if (error) {
-
+    return <h3 className='text-red-600'> Error </h3>
   }
 
   const getProdcuts = async () => {
@@ -74,6 +76,18 @@ const App = () => {
           </div>
         </div>
       </div> */}
+      <h2>Mobiles</h2>
+
+      {
+        products?.map((product, index) => {
+          return (
+            <div key={index}>
+              <h3>{product.brandName} </h3>
+            </div>
+          )
+        })
+      }
+
     </div>
   )
 }
