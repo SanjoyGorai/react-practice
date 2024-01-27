@@ -12,9 +12,9 @@ const Laptop = () => {
   return (
     <div>
       <h1>Laptops</h1>
-      {/* <h2>Laptops (Macbooks) </h2> */}
-      {/* <img src={laptop.image} alt="" /> */}
-      {/* <h3>{laptop?.brand} </h3> */}
+      <h2>Laptops (Macbooks) </h2>
+      <img src={laptop.image} alt="" />
+      <h3>{laptop?.brand} </h3>
 
       <div className='flex gap-3'>
         {
