@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,7 @@ import Products from './components/Products/Products';
 import useFetch from '../hooks/CustomHooks/useFetch';
 import Laptop from './components/Laptops/Laptop';
 import Mobiles from './components/Phones/Mobiles';
+import { MobileContextProvider } from './context/MobileContext';
 
 const App = () => {
 
@@ -44,8 +45,10 @@ const App = () => {
 
   return (
     <div>
-      <Laptop/>
-      <Mobiles/>
+      <Laptop />
+      <MobileContextProvider>
+        <Mobiles />
+      </MobileContextProvider>
       {/* <Users />
       <Products /> */}
       {/* <div className="bg-white">

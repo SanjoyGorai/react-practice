@@ -1,12 +1,16 @@
 import React, { useContext, useState } from 'react'
-import MobileContext from '../../context/MobileContext'
+import MobileContext, { MobileContextProvider } from '../../context/MobileContext'
 import ProductContext from '../../context/ProductContext';
 
 const Mobiles = () => {
 
   const mobiles = useContext(MobileContext);
-  console.log(mobiles);
-  const laptop = useContext (ProductContext)
+  console.log(mobiles.title);
+
+  const laptop = useContext(ProductContext);
+
+  // const mobileContextProvider = useContext(MobileContextProvider);
+  // console.log(mobileContextProvider);
 
   function handleClick() {
   }
@@ -17,7 +21,7 @@ const Mobiles = () => {
 
       <div className='flex gap-3'>
         {
-          mobiles?.map((item, index) =>
+          mobiles.mobiles?.map((item, index) =>
             <div className='w-52 h-56 rounded ' key={index}>
               <img src={item.image} alt="" className='' />
               <h3> {item.brand ? item.brand : "Null"} </h3>
