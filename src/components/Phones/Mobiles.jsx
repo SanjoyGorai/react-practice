@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
-import MobileContext, { MobileContextProvider } from '../../context/MobileContext'
+import MobileContext, { MobileContextProvider, useMobileContext } from '../../context/MobileContext'
 import ProductContext from '../../context/ProductContext';
 
 const Mobiles = () => {
 
-  const mobiles = useContext(MobileContext);
+  const mobiles = useMobileContext()
   console.log(mobiles);
 
   const laptop = useContext(ProductContext);

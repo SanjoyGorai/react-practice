@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useContext } from "react"
 import Vivo from '../../public/mobiles/vivo.webp';
 import Apple14 from '../../public/mobiles/Apple iPhone 14 Purple, 128 GB.webp';
 import Aser from '../../public/laptops/Acer Nitro 5 AN515-58 NH.QFSSI.001 Gaming Laptop.webp';
@@ -94,6 +94,10 @@ const mobileDetails = {
 const MobileContext = createContext(mobiles);
 export const LaptopContextMob = createContext(laptops);
 
+export const useMobileContext = () => {
+    const mobiles = useContext(MobileContext);
+    return mobiles;
+}
 
 export const MobileContextProvider = (props) => {
     const [title, setTitle] = useState('Mobile Title')
