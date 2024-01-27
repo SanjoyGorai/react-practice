@@ -44,7 +44,7 @@ const App = () => {
 
   return (
     <div>
-      {/* <Laptop/> */}
+      <Laptop/>
       <Mobiles/>
       {/* <Users />
       <Products /> */}
