@@ -25,7 +25,7 @@ const Mobiles = () => {
               <h3> {item.brand ? item.brand : "Null"} </h3>
               <h3>{item.price} </h3>
               <h3>{item.color} </h3>
-              <h3>Title :{mobiles.title} </h3>
+              <h3 className='font-bold text-red-500'>Title :{mobiles.title} </h3>
 
             </div>
           )
