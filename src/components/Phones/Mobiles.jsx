@@ -5,14 +5,12 @@ import ProductContext from '../../context/ProductContext';
 const Mobiles = () => {
 
   const mobiles = useContext(MobileContext);
-  console.log(mobiles.title);
+  console.log(mobiles);
 
   const laptop = useContext(ProductContext);
 
-  // const mobileContextProvider = useContext(MobileContextProvider);
-  // console.log(mobileContextProvider);
-
   function handleClick() {
+    mobiles.setTitle('Title Changed')
   }
 
   return (
@@ -27,6 +25,7 @@ const Mobiles = () => {
               <h3> {item.brand ? item.brand : "Null"} </h3>
               <h3>{item.price} </h3>
               <h3>{item.color} </h3>
+              <h3>Title :{mobiles.title} </h3>
 
             </div>
           )

@@ -45,9 +45,9 @@ const App = () => {
 
   return (
     <div>
-      <Laptop />
       <MobileContextProvider>
         <Mobiles />
+      <Laptop />
       </MobileContextProvider>
       {/* <Users />
       <Products /> */}
